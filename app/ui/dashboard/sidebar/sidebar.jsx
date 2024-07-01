@@ -11,6 +11,7 @@ import {
   MdPeople,
   MdShoppingBag,
   MdSupervisedUserCircle,
+  MdVerifiedUser,
   MdWork,
 } from "react-icons/md";
 import Link from "next/link";
@@ -33,6 +34,11 @@ const menuItems = [
         title: "Products",
         path: "/dashboard/products",
         icon: <MdShoppingBag />,
+      },
+      {
+        title: "Vendors",
+        path: "/dashboard/vendor",
+        icon: <MdVerifiedUser />,
       },
       {
         title: "Transactions",

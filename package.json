@@ -3,15 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 8080",
     "build": "next build",
-    "start": "next start",
+    "start": "NODE_ENV=production node server.js",
     "lint": "next lint"
   },
   "dependencies": {
     "@next/eslint-plugin-next": "14.0.1",
+    "axios": "^1.7.2",
     "bcrypt": "^5.1.1",
-    "mongoose": "^8.4.0",
+    "cors": "^2.8.5",
     "next": "14.0.1",
     "react": "18",
     "react-dom": "18",

@@ -56,6 +56,10 @@
   background-color: teal;
 }
 
+.edit {
+  background-color: yellowgreen;
+}
+
 .delete {
   background-color: crimson;
 }

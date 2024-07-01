@@ -1,44 +1,72 @@
+"use client";
 import styles from "@/app/ui/dashboard/users/singleUser/singleUser.module.css";
+import axios from "axios";
 import Image from "next/image";
+import { useParams } from "next/navigation";
+import { useEffect, useState } from "react";
 
 const SingleUserPage = () => {
+  const [items, setItems] = useState([]);
+  const { id } = useParams();
+  useEffect(() => {
+    getUserById();
+  }, []);
+
+  const getUserById = async () => {
+    const response = await axios.get(
+      `https://nextlearning.theblueflame.my.id/public/pegawai/${id}`
+    );
+    setItems(response.data.details);
+  };
   return (
     <div className={styles.container}>
       <div className={styles.infoContainer}>
         <div className={styles.imgContainer}>
           <Image src="/noavatar.png" alt="" fill className={styles.userImage} />
         </div>
-        John Doe
+        {items.name}
       </div>
       <div className={styles.formContainer}>
         <form action="" className={styles.form}>
-          <label>Username</label>
-          <input type="text" name="username" placeholder="John Doe" />
+          <label>Name</label>
+          <input
+            type="text"
+            name="username"
+            placeholder="John Doe"
+            value={items.name}
+          />
 
           <label>Email</label>
-          <input type="email" name="email" placeholder="JohnDoe@gmail.com" />
+          <input
+            type="email"
+            name="email"
+            placeholder="JohnDoe@gmail.com"
+            value={items.email}
+          />
 
-          <label>Password</label>
-          <input type="password" name="password" placeholder="password" />
+          <label>Mobile</label>
+          <input
+            type="text"
+            name="mobile"
+            placeholder="+628000..."
+            value={items.mobile}
+          />
 
-          <label>Phone</label>
-          <input type="text" name="phone" placeholder="+628000..." />
+          <label>Course</label>
+          <input
+            type="text"
+            name="course"
+            placeholder="course"
+            value={items.email}
+          />
 
-          <label>Address</label>
-          <textarea type="text" name="address" placeholder="Bandung" />
-
-          <label>Is Admin</label>
-          <select name="isAdmin" id="isAdmin">
-            <option value={true}>Yes</option>
-            <option value={false}>No</option>
-          </select>
-
-          <label>Is Active</label>
-          <select name="isActive" id="isActive">
-            <option value={true}>Yes</option>
-            <option value={false}>No</option>
-          </select>
-          <button>Update</button>
+          <label>Status</label>
+          <input
+            type="text"
+            name="course"
+            placeholder="course"
+            value={items.status ? "Active" : "Passive"}
+          />
         </form>
       </div>
     </div>
